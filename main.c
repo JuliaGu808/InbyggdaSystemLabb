@@ -9,6 +9,8 @@ int main(void)
 {
    DDRB |= 0b000001; // PIN 8
 
+   uart_init();
+
    while (1)
    {
       // turn LED on
@@ -18,5 +20,9 @@ int main(void)
       // turn LED off
       PORTB &= ~0b000001;
       _delay_ms(BLINK_DELAY_MS);
+
+      uart_putstr("Julia\n");
+      _delay_ms(BLINK_DELAY_MS);
+
    }
 }

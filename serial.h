@@ -12,6 +12,5 @@ void uart_echo(void);
 
 void USART_TransmitPolling(uint8_t DataByte);
 
-
 #endif
 
