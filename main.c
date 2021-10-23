@@ -24,5 +24,8 @@ int main(void)
       uart_putstr("Julia\n");
       _delay_ms(BLINK_DELAY_MS);
 
+      uart_echo();
+      _delay_ms(BLINK_DELAY_MS);
+
    }
 }

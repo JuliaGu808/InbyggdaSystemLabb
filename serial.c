@@ -1,5 +1,6 @@
 #include <avr/io.h>
 #include <util/delay.h>
+#include <string.h>
 
 #include "serial.h"
 
@@ -45,6 +46,11 @@ void uart_putchar(char chr)
         USART_TransmitPolling('\r');
         USART_TransmitPolling('\n');
     }
+    else if (chr == '\r') // "enter" på tangentbord == '\r'
+    {
+        USART_TransmitPolling('\r');
+        USART_TransmitPolling('\n');
+    }
     else
     {
         USART_TransmitPolling(chr);
@@ -68,4 +74,20 @@ void USART_TransmitPolling(uint8_t DataByte)
     {
     }; // Do nothing until UDR is ready
     UDR0 = DataByte;
+}
+
+void uart_echo(void)
+{
+    char LocalData = uart_getchar();
+    uart_putchar(LocalData);
+}
+
+char uart_getchar(void)
+{
+    uint8_t DataByte;
+    while ((UCSR0A & (1 << RXC0)) == 0)
+    {
+    }; // Do nothing until data have been received
+    DataByte = UDR0;
+    return DataByte;
 }

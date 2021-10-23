@@ -20,3 +20,10 @@ Putty print ut
 
 <img src="image/puttyDel2.png">
 
+## commit - 3: uppgift 3
+
+Putty läsa in och printa ut
+
+<img src="image/puttyDel3.png">
+
+
