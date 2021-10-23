@@ -12,5 +12,8 @@ void uart_echo(void);
 
 void USART_TransmitPolling(uint8_t DataByte);
 
+void uart_led_input(void);
+void uart_check_led(const char *str);
+
 #endif
 

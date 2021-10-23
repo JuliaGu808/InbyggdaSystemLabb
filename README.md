@@ -26,4 +26,8 @@ Putty läsa in och printa ut
 
 <img src="image/puttyDel3.png">
 
+## commit - 4: uppgift 4
 
+Putty läsa in, om ON/OFF, så tända/släcka led
+
+<img src="image/puttyDel4.png">

@@ -27,5 +27,7 @@ int main(void)
       uart_echo();
       _delay_ms(BLINK_DELAY_MS);
 
+      uart_led_input();
+
    }
 }

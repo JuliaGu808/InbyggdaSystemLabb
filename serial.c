@@ -91,3 +91,36 @@ char uart_getchar(void)
     DataByte = UDR0;
     return DataByte;
 }
+
+void uart_led_input(void)
+{
+    char input[10];
+    uint8_t i;
+    char c;
+
+    for (i = 0; i < 9; i++)
+    {
+        c = uart_getchar();
+        input[i] = c;
+        if (c == '\r')
+        {
+            input[i] = '\n';
+            break;
+        }
+    }
+    input[i + 1] = '\0';
+    uart_putstr(input);
+    uart_check_led(input);
+}
+
+void uart_check_led(const char *str)
+{
+    if (str[0] == 'O' && str[1] == 'N' && str[2]=='\n')
+    {
+        PORTB |= 0b000001;
+    }
+    if (str[0] == 'O' && str[1] == 'F' && str[2]=='F' && str[3]=='\n')
+    {
+        PORTB &= ~0b000001;
+    }
+}
